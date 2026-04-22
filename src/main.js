@@ -1,64 +1,3 @@
-// import './style.css'
-// import javascriptLogo from './assets/javascript.svg'
-// import viteLogo from './assets/vite.svg'
-// import heroImg from './assets/hero.png'
-// import { setupCounter } from './counter.js'
-
-// document.querySelector('#app').innerHTML = `
-// <section id="center">
-//   <div class="hero">
-//     <img src="${heroImg}" class="base" width="170" height="179">
-//     <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-//     <img src="${viteLogo}" class="vite" alt="Vite logo" />
-//   </div>
-//   <div>
-//     <h1>Get started</h1>
-//     <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-//   </div>
-//   <button id="counter" type="button" class="counter"></button>
-// </section>
-
-// <div class="ticks"></div>
-
-// <section id="next-steps">
-//   <div id="docs">
-//     <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-//     <h2>Documentation</h2>
-//     <p>Your questions, answered</p>
-//     <ul>
-//       <li>
-//         <a href="https://vite.dev/" target="_blank">
-//           <img class="logo" src="${viteLogo}" alt="" />
-//           Explore Vite
-//         </a>
-//       </li>
-//       <li>
-//         <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-//           <img class="button-icon" src="${javascriptLogo}" alt="">
-//           Learn more
-//         </a>
-//       </li>
-//     </ul>
-//   </div>
-//   <div id="social">
-//     <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-//     <h2>Connect with us</h2>
-//     <p>Join the Vite community</p>
-//     <ul>
-//       <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-//       <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-//       <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-//       <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-//     </ul>
-//   </div>
-// </section>
-
-// <div class="ticks"></div>
-// <section id="spacer"></section>
-// `
-
-// setupCounter(document.querySelector('#counter'))
-
 import './style.css'
 import * as ort from 'onnxruntime-web'
 
@@ -67,11 +6,11 @@ const BASE = import.meta.env.BASE_URL;
 document.querySelector('#app').innerHTML = `
   <div class="container">
     <div class="header-logos">
-      <img src="${BASE}assets/logo-vnu.jpg" alt="School logo" class="header-logo" />
-      <img src="${BASE}assets/uet-logo.png" alt="School logo" class="header-logo" />
+      <img src="${BASE}assets/uet-logo.png" alt="UET logo" class="header-logo" />
+      <img src="${BASE}assets/logo-vnu.jpg" alt="VNU logo" class="header-logo" />
     </div>
 
-    <h1>Tomato Leaf Disease Classification</h1>
+    <h1>Tomato Leaf Disease Classifier</h1>
     <p class="desc">Upload a tomato leaf image to preview it.</p>
 
     <div class="warning-box">
@@ -82,7 +21,19 @@ document.querySelector('#app').innerHTML = `
     <div class="toolbar">
       <input type="file" id="imageInput" accept="image/*" />
       <button id="predictBtn" disabled>Predict</button>
+      <button id="guideBtn" class="guide-btn">Guide</button>
       <button id="clearBtn" disabled class="secondary-btn">Clear</button>
+    </div>
+
+    <div id="guideBox" class="guide-box hidden">
+      <h3>How to Use</h3>
+      <ol>
+        <li>Upload a tomato leaf image from your device.</li>
+        <li>Adjust the threshold if needed.</li>
+        <li>Click <strong>Predict</strong> to run the model.</li>
+        <li>Review the predicted labels and confidence scores.</li>
+        <li>Use the results as reference only, since the model may be uncertain or incorrect.</li>
+      </ol>
     </div>
 
     <div class="threshold-box">
@@ -112,6 +63,8 @@ const status = document.getElementById('status');
 const result = document.getElementById('result');
 const predictBtn = document.getElementById('predictBtn');
 const clearBtn = document.getElementById('clearBtn');
+const guideBtn = document.getElementById('guideBtn');
+const guideBox = document.getElementById('guideBox');
 const thresholdRange = document.getElementById('thresholdRange');
 const thresholdValue = document.getElementById('thresholdValue');
 
@@ -125,6 +78,10 @@ let selectedFile = null;
 
 thresholdRange.addEventListener('input', () => {
   thresholdValue.textContent = Number(thresholdRange.value).toFixed(2);
+});
+
+guideBtn.addEventListener('click', () => {
+  guideBox.classList.toggle('hidden');
 });
 
 imageInput.addEventListener('change', (event) => {

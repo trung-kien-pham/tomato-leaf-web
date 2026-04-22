@@ -66,6 +66,31 @@ h1 {
   flex-wrap: wrap;
 }
 
+.guide-box {
+  margin-top: 16px;
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: #eef4ff;
+  border: 1px solid #c8d9ff;
+  color: #1f3f7a;
+  line-height: 1.6;
+}
+
+.guide-box h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.guide-box ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
 .threshold-box {
   margin-top: 16px;
   margin-bottom: 20px;
@@ -124,6 +149,10 @@ button:disabled {
 
 .secondary-btn {
   background: #6c7a92;
+}
+
+.guide-btn {
+  background: #3b82f6;
 }
 
 #result {
