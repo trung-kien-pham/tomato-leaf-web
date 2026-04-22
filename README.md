@@ -1,4 +1,4 @@
-# Tomato Leaf Disease Classifier Web App
+# Tomato Leaf Disease Classification Web App
 
 A web-based demo for **multi-label tomato leaf disease classification** using **ONNX Runtime Web** and **Vite**.  
 This project allows users to upload a tomato leaf image, run inference directly in the browser, and view predicted labels with confidence scores.
