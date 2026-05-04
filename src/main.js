@@ -7,7 +7,7 @@ document.querySelector('#app').innerHTML = `
   <div class="container">
     <div class="header-logos">
       <img src="${BASE}assets/uet-logo.png" alt="UET logo" class="header-logo" />
-      <img src="${BASE}public/assets/vnu_logo_2026.png" alt="VNU logo" class="header-logo" />
+      <img src="${BASE}assets/vnu_logo_2026.png" alt="VNU logo" class="header-logo" />
     </div>
 
     <h1>Tomato Leaf Disease Classifier</h1>
